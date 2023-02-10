@@ -24,7 +24,7 @@ func WithRedis(redis *redis.Client) RouterOption {
 // WithDatabaseService is a function
 func WithDatabaseService(databaseService *dao.Repositories) RouterOption {
 	return func(r *Router) {
-		r.databaseService = databaseService
+		r.repo = databaseService
 	}
 }
 
