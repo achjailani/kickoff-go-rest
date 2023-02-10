@@ -13,10 +13,10 @@ import (
 
 // Router is a struct contains dependencies needed
 type Router struct {
-	config          *config.Config
-	redis           *redis.Client
-	jwt             *jwt.JWT
-	databaseService *dao.Repositories
+	config *config.Config
+	redis  *redis.Client
+	jwt    *jwt.JWT
+	repo   *dao.Repositories
 }
 
 // RouterOption return Router with RouterOption to fill up the dependencies
@@ -39,9 +39,9 @@ func (r *Router) Init() *gin.Engine {
 
 	e := gin.Default()
 
-	guard := middleware.NewGuard(r.config, r.redis, r.jwt, r.databaseService)
+	guard := middleware.NewGuard(r.config, r.redis, r.jwt, r.repo)
 
-	useCase := handler.NewHandler(r.config, r.redis, r.databaseService, r.jwt)
+	useCase := handler.NewHandler(r.config, r.redis, r.repo, r.jwt)
 
 	e.GET("/api/ping", useCase.Ping)
 	e.GET("/api/dev-error", useCase.DevErrorHandler)
