@@ -37,7 +37,7 @@ func main() {
 		log.Fatalf("unable to initialize JWT, err: %v", errJWT)
 	}
 
-	databaseService := dao.NewDBService(dbConn)
+	databaseService := dao.NewRepo(dbConn)
 
 	app := cmd.NewCli()
 	app.Action = func(ctx *cli.Context) error {

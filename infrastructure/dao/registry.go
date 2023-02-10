@@ -5,6 +5,7 @@ import (
 	"github.com/achjailani/kickoff-go-rest/domain/registry/core"
 )
 
+// NewRegistry is constructor of Registry
 func NewRegistry() *registry.Registry {
 	var entityRegistry []registry.Entity
 	var tableRegistry []registry.Table

@@ -4,13 +4,13 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/joho/godotenv"
 	"github.com/achjailani/kickoff-go-rest/config"
 	"github.com/achjailani/kickoff-go-rest/infrastructure/core/provider/connection"
 	"github.com/achjailani/kickoff-go-rest/infrastructure/dao"
 	seeder2 "github.com/achjailani/kickoff-go-rest/pkg/seeder"
 	"github.com/achjailani/kickoff-go-rest/tests/database"
 	"github.com/achjailani/kickoff-go-rest/util"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
@@ -40,7 +40,7 @@ func Init() *TestSuite {
 		log.Fatalf("unable to connect to database, %v", errDBConn)
 	}
 
-	repo := dao.NewDBService(dbConn)
+	repo := dao.NewRepo(dbConn)
 	ctx := context.Background()
 
 	drop := database.NewDrop(dbConn)

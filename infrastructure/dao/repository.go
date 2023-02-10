@@ -7,6 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Repositories is a struct collects repositories
 type Repositories struct {
 	DB                    *gorm.DB
 	UserRepository        repository.UserRepository
@@ -14,7 +15,8 @@ type Repositories struct {
 	UserProfileRepository repository.UserProfileRepository
 }
 
-func NewDBService(db *gorm.DB) *Repositories {
+// NewRepo is constructor of Repositories
+func NewRepo(db *gorm.DB) *Repositories {
 	return &Repositories{
 		DB:                    db,
 		UserRepository:        persistence.NewUserRepository(db),
